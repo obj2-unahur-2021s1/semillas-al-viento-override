@@ -3,7 +3,7 @@ package ar.edu.unahur.obj2.semillasAlViento
 abstract class Planta(val anioObtencionSemilla: Int, var altura: Float) {
   fun esFuerte() = this.horasDeSolQueTolera() > 10
 
-  fun parcelaTieneComplicaciones(parcela: Parcela) =
+  fun parcelaTieneComplicaciones(parcela: Parcela) = // YAGNI: esta funcion no se usa jamas, se introdujo por si se utiliza mas adelante
     parcela.plantas.any { it.horasDeSolQueTolera() < parcela.horasSolPorDia }
 
   abstract fun horasDeSolQueTolera(): Int
@@ -30,10 +30,10 @@ class Soja(anioObtencionSemilla: Int, altura: Float, val esTransgenica: Boolean)
 
 
   override fun daSemillas(): Boolean  {
-    if (this.esTransgenica) {
-      return false
-    }
-
+    if (this.esTransgenica) {  //Problemas de consistencia, se tomo una decision distinta al anterior daSemillas
+      return false             // YAGNI - Complejidad accidental. Una solucion seria agregar un
+    }                          // "|| not this.esTransgenica" al ultimo return.
+                               //Usar varios return es una mala practica de programacion. Queda horrible
     return this.esFuerte() || (this.anioObtencionSemilla > 2007 && this.altura > 1)
   }
 }
