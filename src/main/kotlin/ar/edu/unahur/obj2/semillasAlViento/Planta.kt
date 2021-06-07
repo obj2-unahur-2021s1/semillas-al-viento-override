@@ -4,12 +4,12 @@ abstract class Planta(val anioObtencionSemilla: Int, val altura: Float) {
 
   fun esFuerte() = this.horasDeSolQueTolera() > 10
   abstract fun horasDeSolQueTolera(): Int
-  abstract fun daSemillas(): Boolean
+  open fun daSemillas() = this.esFuerte()
 }
 
 class Menta(anioObtencionSemilla: Int, altura: Float) : Planta(anioObtencionSemilla, altura) {
   override fun horasDeSolQueTolera() = 6
-  override fun daSemillas() = this.esFuerte() || altura > 0.4
+  override fun daSemillas() = super.daSemillas() || altura > 0.4
 }
 
 open class Soja(anioObtencionSemilla: Int, altura: Float) : Planta(anioObtencionSemilla, altura) {
@@ -25,7 +25,7 @@ open class Soja(anioObtencionSemilla: Int, altura: Float) : Planta(anioObtencion
     return horasBase
   }
 
-  override fun daSemillas() = this.esFuerte() || (this.anioObtencionSemilla > 2007 && this.altura > 1)
+  override fun daSemillas() = super.daSemillas() || (this.anioObtencionSemilla > 2007 && this.altura > 1)
 }
 
 
