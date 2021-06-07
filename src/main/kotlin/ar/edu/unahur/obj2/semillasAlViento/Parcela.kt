@@ -28,6 +28,3 @@ class Parcela(val ancho: Int, val largo: Int, val horasSolPorDia: Int) {
 
 
 
-//FALTA este requerimiento: saber si tiene complicaciones,
-
-//FALTA: faltan todos los test. Asique eso seria facilidad de prueba, que no la hay
